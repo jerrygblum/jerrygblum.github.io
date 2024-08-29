@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coming Soon!</title>
+    <!-- Link to Google Fonts for the "Lato" font -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         /* Reset and base styles */
         body {
@@ -15,32 +17,34 @@
             align-items: center;
             flex-direction: column;
             height: 100vh;
-            background-color: #1a1a1a; /* Dark background color */
-            font-family: 'Arial', sans-serif;
-            color: #e0e0e0; /* Light text color */
+            background-color: #2b2b2b; /* Dark background color */
+            font-family: 'Lato', sans-serif; /* Elegant font */
+            color: #dcdcdc; /* Subtle light gray text color */
             text-align: center;
         }
 
         h1 {
-            font-size: 42px;
-            color: #ffcc00; /* Warm yellow for the main heading */
-            animation: pulse 2s infinite;
+            font-size: 36px;
+            color: #9db4c0; /* Soft, muted blue for main heading */
+            animation: pulse 3s infinite;
+            margin-bottom: 10px;
         }
 
         p {
-            font-size: 20px;
-            margin-top: 15px;
-            color: #c0c0c0; /* Light gray for paragraph text */
+            font-size: 18px;
+            margin-top: 10px;
+            color: #b0b0b0; /* Softer gray for paragraph text */
         }
 
         .countdown {
-            font-size: 18px;
+            font-size: 20px;
             margin-top: 20px;
-            padding: 10px;
-            color: #a0d8ef; /* Light blue color for countdown */
+            padding: 8px 16px;
+            color: #dcdcdc; /* Same subtle light gray for countdown */
             border-radius: 5px;
-            background-color: #2a2a2a; /* Slightly lighter dark background */
+            background-color: #3a3a3a; /* Slightly lighter dark background */
             animation: fadeIn 1s ease-in-out;
+            font-weight: 700; /* Bold font for emphasis */
         }
 
         /* Keyframes for pulsing animation */
@@ -51,7 +55,7 @@
             }
             50% {
                 transform: scale(1.05);
-                opacity: 0.9;
+                opacity: 0.8;
             }
             100% {
                 transform: scale(1);
@@ -87,13 +91,10 @@
             const distance = targetDate - now;
 
             // Calculate time components
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            const days = Math.ceil(distance / (1000 * 60 * 60 * 24));
 
-            // Display countdown
-            countdownElement.innerHTML = `Only ${days} days, ${hours} hours, ${minutes} minutes, and ${seconds} seconds left!`;
+            // Display countdown in days only
+            countdownElement.innerHTML = `Only ${days} days left!`;
 
             // Check if the target date has been reached
             if (distance < 0) {
@@ -102,7 +103,7 @@
             }
         }
 
-        // Update countdown every second
+        // Update countdown every day
         const countdownInterval = setInterval(updateCountdown, 1000);
         updateCountdown(); // Initial call to display immediately
     </script>
