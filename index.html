@@ -84,12 +84,19 @@
     </div>
 
     <script>
-        // Countdown timer
+        // Countdown timer with timezone support
         function updateCountdown() {
             const countdownElement = document.getElementById('countdown');
-            const targetDate = new Date('September 7, 2024 00:00:00').getTime();
-            const now = new Date().getTime();
-            const distance = targetDate - now;
+
+            // Define the target date in UTC timezone
+            const targetDate = new Date(Date.UTC(2024, 8, 7, 13, 10, 0)); // September 7, 2024, at 13:10:00 UTC
+            const now = new Date();
+
+            // Get timezone offset in milliseconds
+            const timezoneOffset = now.getTimezoneOffset() * 60 * 1000;
+
+            // Calculate the distance taking timezone into account
+            const distance = targetDate.getTime() - (now.getTime() + timezoneOffset);
 
             // Calculate time components
             const days = Math.ceil(distance / (1000 * 60 * 60 * 24));
@@ -104,7 +111,7 @@
             }
         }
 
-        // Update countdown every day
+        // Update countdown every second
         const countdownInterval = setInterval(updateCountdown, 1000);
         updateCountdown(); // Initial call to display immediately
     </script>
