@@ -89,20 +89,18 @@
             const countdownElement = document.getElementById('countdown');
 
             // Define the target date in UTC timezone
-            const targetDate = new Date(Date.UTC(2024, 8, 7, 13, 10, 0)); // September 7, 2024, at 13:10:00 UTC
+            const targetDate = new Date(Date.UTC(2024, 8, 7, 0, 0, 0)); // September 7, 2024, at 00:00:00 UTC
             const now = new Date();
 
-            // Get timezone offset in milliseconds
-            const timezoneOffset = now.getTimezoneOffset() * 60 * 1000;
-
-            // Calculate the distance taking timezone into account
-            const distance = targetDate.getTime() - (now.getTime() + timezoneOffset);
+            // Calculate the distance between now and the target date
+            const distance = targetDate - now;
 
             // Calculate time components
-            const days = Math.ceil(distance / (1000 * 60 * 60 * 24));
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
 
-            // Display countdown in days only
-            countdownElement.innerHTML = `Only ${days} days left!`;
+            // Display countdown in days and hours
+            countdownElement.innerHTML = `Only ${days} days and ${hours} hours left!`;
 
             // Check if the target date has been reached
             if (distance < 0) {
