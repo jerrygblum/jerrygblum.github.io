@@ -13,6 +13,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-direction: column;
             height: 100vh;
             background-color: #f0f8ff;
             font-family: 'Arial', sans-serif;
@@ -28,6 +29,12 @@
         p {
             font-size: 24px;
             margin-top: 20px;
+        }
+
+        .countdown {
+            font-size: 32px;
+            margin-top: 30px;
+            color: #e63946;
         }
 
         /* Keyframes for pulsing animation */
@@ -52,6 +59,36 @@
         <h1>Hi there, my friend!</h1>
         <p>I will be back in Switzerland on the 7th of September and I will be staying until the 2nd of October.</p>
         <p>See you then ;)</p>
+        <div class="countdown" id="countdown"></div>
     </div>
+
+    <script>
+        // Countdown timer
+        function updateCountdown() {
+            const countdownElement = document.getElementById('countdown');
+            const targetDate = new Date('September 7, 2024 00:00:00').getTime();
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            // Calculate time components
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Display countdown
+            countdownElement.innerHTML = `Countdown: ${days} days ${hours} hours ${minutes} minutes ${seconds} seconds`;
+
+            // Check if the target date has been reached
+            if (distance < 0) {
+                clearInterval(countdownInterval);
+                countdownElement.innerHTML = "I'm back in Switzerland!";
+            }
+        }
+
+        // Update countdown every second
+        const countdownInterval = setInterval(updateCountdown, 1000);
+        updateCountdown(); // Initial call to display immediately
+    </script>
 </body>
 </html>
