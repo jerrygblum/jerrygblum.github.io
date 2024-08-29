@@ -15,26 +15,32 @@
             align-items: center;
             flex-direction: column;
             height: 100vh;
-            background-color: #f0f8ff;
+            background-color: #f7f9fb;
             font-family: 'Arial', sans-serif;
-            color: #333;
+            color: #444;
             text-align: center;
         }
 
         h1 {
-            font-size: 48px;
+            font-size: 42px;
+            color: #4a90e2;
             animation: pulse 2s infinite;
         }
 
         p {
-            font-size: 24px;
-            margin-top: 20px;
+            font-size: 20px;
+            margin-top: 15px;
+            color: #333;
         }
 
         .countdown {
-            font-size: 32px;
-            margin-top: 30px;
-            color: #e63946;
+            font-size: 18px;
+            margin-top: 20px;
+            padding: 10px;
+            color: #ff6f61;
+            border-radius: 5px;
+            background-color: #fff5f5;
+            animation: fadeIn 1s ease-in-out;
         }
 
         /* Keyframes for pulsing animation */
@@ -44,11 +50,21 @@
                 opacity: 1;
             }
             50% {
-                transform: scale(1.1);
-                opacity: 0.8;
+                transform: scale(1.05);
+                opacity: 0.9;
             }
             100% {
                 transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* Keyframes for fade-in animation */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
                 opacity: 1;
             }
         }
@@ -77,7 +93,7 @@
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
             // Display countdown
-            countdownElement.innerHTML = `Countdown: ${days} days ${hours} hours ${minutes} minutes ${seconds} seconds`;
+            countdownElement.innerHTML = `Only ${days} days, ${hours} hours, ${minutes} minutes, and ${seconds} seconds left!`;
 
             // Check if the target date has been reached
             if (distance < 0) {
