@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>jeblu</title>
-    <!-- Link to Google Fonts for the "Lato" font -->
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>Jeblu</title>
+    <!-- Use Helvetica or a similar sans-serif font -->
     <style>
-        /* Ensure no unwanted scrolling and fit the page within the viewport */
+        @import url('https://fonts.googleapis.com/css2?family=Helvetica:wght@300;400;700&display=swap');
+
+        /* Reset and base styles */
         html, body {
             margin: 0;
             padding: 0;
@@ -18,50 +19,35 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #2b2b2b; /* Dark background color */
-            font-family: 'Lato', sans-serif; /* Elegant font */
-            color: #dcdcdc; /* Subtle light gray text color */
+            font-family: 'Helvetica', Arial, sans-serif;
+            background-color: #f5f5f5; /* Light gray background */
+            color: #333333; /* Dark text */
             text-align: center;
         }
 
         h1 {
-            font-size: 36px;
-            color: #9db4c0; /* Soft, muted blue for main heading */
-            animation: pulse 3s infinite;
-            margin-bottom: 10px;
+            font-size: 40px;
+            font-weight: 700;
+            color: #000000; /* Black heading */
+            margin-bottom: 20px;
         }
 
         p {
             font-size: 18px;
+            font-weight: 300;
+            color: #333333; /* Darker gray for paragraph text */
             margin-top: 10px;
-            color: #b0b0b0; /* Softer gray for paragraph text */
+            margin-bottom: 10px;
         }
 
         .countdown {
             font-size: 20px;
+            font-weight: 400;
             margin-top: 20px;
-            padding: 8px 16px;
-            color: #dcdcdc; /* Same subtle light gray for countdown */
+            padding: 10px 20px;
+            color: #FFFFFF;
+            background-color: #ff0000; /* Red background for countdown (Swiss-inspired) */
             border-radius: 5px;
-            background-color: #3a3a3a; /* Slightly lighter dark background */
-            animation: fadeIn 1s ease-in-out;
-            font-weight: 700; /* Bold font for emphasis */
-        }
-
-        /* Keyframes for pulsing animation */
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-                opacity: 1;
-            }
-            50% {
-                transform: scale(1.05);
-                opacity: 0.8;
-            }
-            100% {
-                transform: scale(1);
-                opacity: 1;
-            }
         }
 
         /* Keyframes for fade-in animation */
@@ -73,12 +59,16 @@
                 opacity: 1;
             }
         }
+
+        .fade-in {
+            animation: fadeIn 1s ease-in-out;
+        }
     </style>
 </head>
 <body>
-    <div>
-        <h1>Hello and welcome!</h1>
-        <p>I am currently in CH and staying until the 2nd of October</p>
+    <div class="fade-in">
+        <h1>Hello and Welcome!</h1>
+        <p>I am currently in Switzerland and staying until the 2nd of October.</p>
         <p>See you soon ;)</p>
         <div class="countdown" id="countdown"></div>
     </div>
@@ -87,33 +77,32 @@
         // Countdown timer with timezone support
         function updateCountdown() {
             const countdownElement = document.getElementById('countdown');
-    
+
             // Define the target date in UTC timezone
-            const targetDate = new Date(Date.UTC(2024, 9, 2, 13, 50, 0)); // September 7, 2024, at 13:10:00 UTC
+            const targetDate = new Date(Date.UTC(2024, 9, 2, 13, 50, 0)); // October 2, 2024, at 13:50:00 UTC
             const now = new Date();
-    
+
             // Calculate the distance between now and the target date
             const distance = targetDate - now;
-    
+
             // Calculate time components
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    
+
             // Display countdown in days, hours, and minutes
             countdownElement.innerHTML = `Only ${days} days, ${hours} hours, and ${minutes} minutes left!`;
-    
+
             // Check if the target date has been reached
             if (distance < 0) {
                 clearInterval(countdownInterval);
                 countdownElement.innerHTML = "I'm in Switzerland!";
             }
         }
-    
+
         // Update countdown every second
         const countdownInterval = setInterval(updateCountdown, 1000);
         updateCountdown(); // Initial call to display immediately
     </script>
-
 </body>
 </html>
