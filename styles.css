@@ -1,5 +1,3 @@
-/* styles.css */
-
 /* Basic reset */
 html, body {
     margin: 0;
@@ -12,29 +10,31 @@ html, body {
     justify-content: center;
     align-items: center;
     font-family: 'Helvetica', Arial, sans-serif;
-    background-color: #f5f5f5;
-    color: #333333;
+    background-color: #1b1b1b; /* Dark background for spooky effect */
+    color: #f5f5f5; /* Light text for contrast */
     text-align: center;
+    position: relative;
 }
 
 /* Main content */
 h1 {
     font-size: 40px;
     font-weight: 700;
-    color: #000000;
+    color: #ff8800; /* Halloween orange for the heading */
     margin-bottom: 20px;
+    font-family: 'Creepster', cursive; /* Creepster font for spooky heading */
 }
 
 p {
     font-size: 18px;
     font-weight: 300;
-    color: #333333;
+    color: #f5f5f5; /* Light gray for body text */
     margin: 10px 0;
 }
 
-/* Highlight important text in red */
+/* Highlight important text in orange for Halloween */
 .highlight {
-    color: #ff0000; /* Red highlight */
+    color: #ff8800; /* Halloween orange */
 }
 
 /* Countdown style */
@@ -43,8 +43,8 @@ p {
     font-weight: 400;
     margin-top: 20px;
     padding: 10px 20px;
-    color: #333333; /* Neutral dark gray for countdown */
-    background-color: #eaeaea; /* Light gray for countdown background */
+    color: #f5f5f5;
+    background-color: #333333; /* Darker gray for contrast */
     border-radius: 5px;
 }
 
@@ -59,25 +59,72 @@ p {
 .links a {
     font-size: 18px;
     font-weight: 400;
-    color: #333333;
+    color: #f5f5f5;
     text-decoration: none;
     transition: color 0.3s;
 }
 
 .links a:hover {
-    color: #ff0000; /* Red hover effect for links */
+    color: #ff8800; /* Halloween orange hover effect */
 }
 
-/* Fade-in animation */
-@keyframes fadeIn {
+/* Spooky Elements */
+
+/* Animated flying bats */
+@keyframes fly {
     0% {
-        opacity: 0;
+        transform: translateX(-50px) translateY(10px);
+    }
+    50% {
+        transform: translateX(50px) translateY(-30px);
     }
     100% {
-        opacity: 1;
+        transform: translateX(150px) translateY(20px);
     }
 }
 
-.fade-in {
-    animation: fadeIn 1s ease-in-out;
+.bat {
+    position: absolute;
+    width: 40px;
+    height: auto;
+    animation: fly 5s infinite ease-in-out;
+}
+
+.bat:nth-child(1) {
+    top: 10%;
+    left: 20%;
+}
+
+.bat:nth-child(2) {
+    top: 20%;
+    left: 60%;
+    animation-duration: 6s;
+}
+
+.bat:nth-child(3) {
+    top: 50%;
+    left: 10%;
+    animation-duration: 4s;
+}
+
+/* Spider web in the corner */
+.spider-web {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 150px;
+    height: 150px;
+    background-image: url('spider-web.png'); /* Add your spider web image */
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.7;
+}
+
+/* Pumpkin icon next to content */
+.pumpkin {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    width: 50px;
+    height: auto;
 }
