@@ -5,7 +5,7 @@ function updateCountdown() {
     const countdownElement = document.getElementById('countdown');
 
     // Define the target date in UTC timezone
-    const targetDate = new Date(Date.UTC(2024, 9, 31, 11, 0, 0)); // October 2, 2024, at 13:50:00 UTC
+    const targetDate = new Date(Date.UTC(2024, 11, 7, 21, 30, 0)); // December 7, 2024, at 12:50:00 UTC
     const now = new Date();
 
     // Calculate the distance between now and the target date

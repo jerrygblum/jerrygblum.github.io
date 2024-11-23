@@ -10,8 +10,8 @@ html, body {
     justify-content: center;
     align-items: center;
     font-family: 'Helvetica', Arial, sans-serif;
-    background-color: #1b1b1b; /* Dark background for spooky effect */
-    color: #f5f5f5; /* Light text for contrast */
+    background: linear-gradient(to bottom, #ffefeb, #ffebf0); /* Soft red-pink gradient for warmth */
+    color: #333333; /* Neutral text color for readability */
     text-align: center;
     position: relative;
 }
@@ -20,21 +20,21 @@ html, body {
 h1 {
     font-size: 40px;
     font-weight: 700;
-    color: #ff8800; /* Halloween orange for the heading */
+    color: #d62828; /* Festive red for heading */
     margin-bottom: 20px;
-    font-family: 'Creepster', cursive; /* Creepster font for spooky heading */
+    font-family: 'Mountains of Christmas', cursive; /* Holiday-themed font */
 }
 
 p {
     font-size: 18px;
     font-weight: 300;
-    color: #f5f5f5; /* Light gray for body text */
+    color: #333333;
     margin: 10px 0;
 }
 
-/* Highlight important text in orange for Halloween */
+/* Highlight important text in green for Christmas */
 .highlight {
-    color: #ff8800; /* Halloween orange */
+    color: #006400; /* Christmas green */
 }
 
 /* Countdown style */
@@ -43,9 +43,10 @@ p {
     font-weight: 400;
     margin-top: 20px;
     padding: 10px 20px;
-    color: #f5f5f5;
-    background-color: #333333; /* Darker gray for contrast */
+    color: #333333;
+    background-color: #e8f5e9; /* Soft green background */
     border-radius: 5px;
+    border: 2px solid #006400; /* Green border for Christmas touch */
 }
 
 /* Links at the bottom */
@@ -59,72 +60,83 @@ p {
 .links a {
     font-size: 18px;
     font-weight: 400;
-    color: #f5f5f5;
+    color: #006400; /* Christmas green */
     text-decoration: none;
-    transition: color 0.3s;
+    transition: color 0.3s, transform 0.3s;
 }
 
 .links a:hover {
-    color: #ff8800; /* Halloween orange hover effect */
+    color: #d62828; /* Festive red hover effect */
+    transform: scale(1.1); /* Slight zoom on hover */
 }
 
-/* Spooky Elements */
+/* Animated snowflakes */
+.snowflake {
+    position: absolute;
+    width: 30px;
+    height: auto;
+    animation: fall 5s infinite linear;
+    opacity: 0.8;
+}
 
-/* Animated flying bats */
-@keyframes fly {
+.snowflake:nth-child(1) {
+    top: -10%;
+    left: 20%;
+    animation-duration: 6s;
+    animation-delay: 0s;
+}
+
+.snowflake:nth-child(2) {
+    top: -10%;
+    left: 50%;
+    animation-duration: 7s;
+    animation-delay: 1s;
+}
+
+.snowflake:nth-child(3) {
+    top: -10%;
+    left: 80%;
+    animation-duration: 5s;
+    animation-delay: 2s;
+}
+
+/* Animation for falling snowflakes */
+@keyframes fall {
     0% {
-        transform: translateX(-50px) translateY(10px);
-    }
-    50% {
-        transform: translateX(50px) translateY(-30px);
+        transform: translateY(-100px);
     }
     100% {
-        transform: translateX(150px) translateY(20px);
+        transform: translateY(110vh);
     }
 }
 
-.bat {
+/* Christmas tree in the corner */
+.tree {
     position: absolute;
-    width: 40px;
-    height: auto;
-    animation: fly 5s infinite ease-in-out;
-}
-
-.bat:nth-child(1) {
-    top: 10%;
-    left: 20%;
-}
-
-.bat:nth-child(2) {
-    top: 20%;
-    left: 60%;
-    animation-duration: 6s;
-}
-
-.bat:nth-child(3) {
-    top: 50%;
-    left: 10%;
-    animation-duration: 4s;
-}
-
-/* Spider web in the corner */
-.spider-web {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 150px;
-    height: 150px;
-    background-image: url('spider-web.png'); /* Add your spider web image */
-    background-size: contain;
-    background-repeat: no-repeat;
-    opacity: 0.7;
-}
-
-/* Pumpkin icon next to content */
-.pumpkin {
-    position: absolute;
-    bottom: 10px;
+    bottom: 20px;
     left: 10px;
+    width: 100px;
+    height: 150px;
+    background: url('christmas-tree.png') no-repeat center;
+    background-size: contain;
+}
+
+/* Ornament for decoration */
+.ornament {
+    position: absolute;
+    bottom: 50px;
+    right: 20px;
     width: 50px;
     height: auto;
+    animation: wiggle 2s infinite ease-in-out;
+}
+
+/* Ornament wiggle animation */
+@keyframes wiggle {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(10deg);
+    }
 }
